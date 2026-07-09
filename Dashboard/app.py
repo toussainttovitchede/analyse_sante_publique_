@@ -88,9 +88,7 @@ try:
     df_raw = load_data(data_path)
 except FileNotFoundError:
     st.error(
-        f"Fichier introuvable : `{data_path}`.\n\n"
-        f"Place `{DATA_FILENAME}` dans le même dossier que `app.py`, "
-        f"ou modifie `DATA_FILENAME` en tête de script."
+        f"Fichier introuvable : `{data_path}`.\n
     )
     st.stop()
 except Exception as e:
