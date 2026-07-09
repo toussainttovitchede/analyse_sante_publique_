@@ -12,6 +12,7 @@ Reproductibilité : placer ce fichier et "data.csv" dans le même dossier
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os
 from pathlib import Path
 
 # --- 0. CONFIGURATION DE LA PAGE ---
@@ -62,7 +63,7 @@ DATA_PATH = BASE_DIR / "Data_Final" / "data.csv"
 # --- 2. CHARGEMENT ET PRÉPARATION DES DONNÉES ---
 @st.cache_data
 def load_data(path: str) -> pd.DataFrame:
-    df = pd.read_csv(path)
+    df = pd.read_csv(DATA_PATH)
 
     # Nettoyage ciblé : on ne supprime une ligne que si SA valeur est manquante,
     # jamais sur la base d'une colonne annexe (contrairement à un dropna() global,
@@ -83,16 +84,15 @@ def load_data(path: str) -> pd.DataFrame:
     return df
 
 
-data_path = "../Data_Final/data.csv"
 try:
-    df_raw = load_data(data_path)
+    df_raw = load_data(DATA_PATH)
 except FileNotFoundError:
     st.error(
-        f"Fichier introuvable : `{data_path}`.\n"
+        f"Fichier introuvable : `{DATA_PATH}`.\n"
     )
     st.stop()
 except Exception as e:
-    st.error(f"Erreur lors du chargement de '{DATA_FILENAME}': {e}")
+    st.error(f"Erreur lors du chargement de '{DATA_PATH}': {e}")
     st.stop()
 
 # --- Titre Principal ---
