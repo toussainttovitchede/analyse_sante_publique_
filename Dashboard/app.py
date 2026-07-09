@@ -55,7 +55,8 @@ INDICATEURS_CIBLES = [
     "Couverture soins prénataux",
 ]
 
-DATA_FILENAME = "../Data_Final/data.csv"  # le fichier doit être à côté de app.py (ou adapter le chemin)
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_PATH = BASE_DIR / "Data_Final" / "data.csv"
 
 
 # --- 2. CHARGEMENT ET PRÉPARATION DES DONNÉES ---
