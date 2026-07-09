@@ -88,7 +88,7 @@ try:
     df_raw = load_data(data_path)
 except FileNotFoundError:
     st.error(
-        f"Fichier introuvable : `{data_path}`.\n
+        f"Fichier introuvable : `{data_path}`.\n"
     )
     st.stop()
 except Exception as e:
